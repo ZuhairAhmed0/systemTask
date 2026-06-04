@@ -111,7 +111,7 @@ const Dashboard = ({ username, onLogout }) => {
 
   return (
     <>
-      <section className="px-6 min-h-screen bg-[#0b1120] text-slate-200 font-sans selection:bg-[#059669] selection:text-white">
+      <section className="min-h-screen bg-[#0b1120] text-slate-200 font-sans selection:bg-[#059669] selection:text-white">
         <Header username={username} onLogout={onLogout} />
         <div className="max-w-3xl mx-auto px-4 pt-4 sm:px-6">
           <main className="w-full">
