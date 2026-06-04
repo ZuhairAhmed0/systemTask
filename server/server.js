@@ -9,11 +9,12 @@ import errorHandler from "./middleware/errorHandller.js";
 
 const app = express();
 const port = process.env.PORT || 5000;
+const clientOrigin = process.env.CLIENT_URL || "http://localhost:3000";
 
 // Cors and body parser middleware
 app.use(
   cors({
-    origin: "http://localhost:3000",
+    origin: clientOrigin,
     credentials: true,
   }),
 );

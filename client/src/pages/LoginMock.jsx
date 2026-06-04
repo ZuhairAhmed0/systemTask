@@ -1,8 +1,9 @@
 import { FaRegCheckSquare } from "react-icons/fa";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const LoginMock = ({ checkAuth }) => {
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -30,7 +31,10 @@ const LoginMock = ({ checkAuth }) => {
         if (!response.ok) throw new Error("Invalid email or password");
         await response.json();
 
-        checkAuth();
+        const authenticated = await checkAuth();
+        if (authenticated) {
+          navigate("/dashboard");
+        }
         setError("");
       } catch (error) {
         setError(error.message);
