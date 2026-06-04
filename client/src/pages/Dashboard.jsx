@@ -5,12 +5,12 @@ import TodoForm from "../components/TodoForm";
 import TodoList from "../components/TodoList";
 import ClearCompleted from "../components/ClearCompleted";
 
-const API_URL = "/api/tasks";
-
 const Dashboard = ({ username, onLogout }) => {
   const [tasks, setTasks] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState("");
+  const apiUrl = import.meta.env.VITE_API_URL || "";
+  const API_URL = `${apiUrl}/api/tasks`;
 
   useEffect(() => {
     const fetchTasks = async () => {
@@ -31,7 +31,7 @@ const Dashboard = ({ username, onLogout }) => {
     };
 
     fetchTasks();
-  }, []);
+  }, [API_URL]);
 
   const completedTasks = tasks.filter((task) => task.completed).length;
 

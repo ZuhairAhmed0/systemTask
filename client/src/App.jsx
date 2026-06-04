@@ -11,7 +11,8 @@ const App = () => {
 
   const checkAuth = useCallback(async () => {
     try {
-      const response = await fetch("/api/auth/check", {
+      const apiUrl = import.meta.env.VITE_API_URL || "";
+      const response = await fetch(`${apiUrl}/api/auth/check`, {
         credentials: "include",
       });
       if (!response.ok) throw new Error("Not authenticated");
@@ -43,7 +44,8 @@ const App = () => {
   }
 
   const handleLogout = async () => {
-    const response = await fetch("/api/auth/logout", {
+    const apiUrl = import.meta.env.VITE_API_URL || "";
+    const response = await fetch(`${apiUrl}/api/auth/logout`, {
       method: "POST",
       credentials: "include",
     });

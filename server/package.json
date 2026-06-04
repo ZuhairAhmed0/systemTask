@@ -5,6 +5,7 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
+  "postinstall": "prisma generate",
     "dev": "node --watch --env-file=.env server.js"
   },
   "keywords": [],

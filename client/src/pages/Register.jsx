@@ -2,8 +2,6 @@ import { FaRegCheckSquare } from "react-icons/fa";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
-const API_URL = "/api/auth/register";
-
 const Register = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
@@ -23,7 +21,8 @@ const Register = () => {
     const register = async () => {
       try {
         setIsLoading(true);
-        const response = await fetch(API_URL, {
+        const apiUrl = import.meta.env.VITE_API_URL || "";
+        const response = await fetch(`${apiUrl}/api/auth/register`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -40,7 +39,7 @@ const Register = () => {
         setError(error.message);
       } finally {
         setIsLoading(false);
-      }     
+      }
     };
 
     register();

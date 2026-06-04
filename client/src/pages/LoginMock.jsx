@@ -2,8 +2,6 @@ import { FaRegCheckSquare } from "react-icons/fa";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-const API_URL = "/api/auth/login";
-
 const LoginMock = ({ checkAuth }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -20,8 +18,8 @@ const LoginMock = ({ checkAuth }) => {
     const login = async () => {
       try {
         setIsLoading(true);
-
-        const response = await fetch(API_URL, {
+        const apiUrl = import.meta.env.VITE_API_URL || "";
+        const response = await fetch(`${apiUrl}/api/auth/login`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
