@@ -12,6 +12,8 @@ export const authenticateUser = (req, res, next) => {
     req.user = decoded;
     next();
   } catch (err) {
+    console.error("Token verification failed:", err);
+    err.message = "Invalid access token";
     err.status = 401;
     return next(err);
   }

@@ -12,11 +12,6 @@ export const getTasks = async (req, res, next) => {
     },
   });
 
-  if (tasks.length === 0) {
-    const error = new Error("Tasks list is empty");
-    error.status = 404;
-    return next(error);
-  }
   res.status(200).json(tasks);
 };
 

@@ -15,6 +15,7 @@ const App = () => {
       const response = await fetch(`${apiUrl}/api/auth/check`, {
         credentials: "include",
       });
+
       if (!response.ok) throw new Error("Not authenticated");
       const data = await response.json();
 

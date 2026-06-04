@@ -19,6 +19,7 @@ const Dashboard = ({ username, onLogout }) => {
           method: "GET",
           credentials: "include",
         });
+
         if (!response.ok) throw new Error("failed to fetch tasks");
         const data = await response.json();
 
