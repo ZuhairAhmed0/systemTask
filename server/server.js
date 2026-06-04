@@ -11,10 +11,12 @@ const app = express();
 const port = process.env.PORT || 5000;
 
 // Cors and body parser middleware
-app.use(cors({
-  origin: "http://localhost:3000",
-  credentials: true,
-}));
+app.use(
+  cors({
+    origin: "http://localhost:3000",
+    credentials: true,
+  }),
+);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
@@ -23,6 +25,12 @@ app.use(cookieParser());
 app.use(logger);
 
 // Use routes
+
+app.get("/", (req, res) => {
+  res.send(
+    "Welcome to the Task Management API. Please use /api/tasks for task operations and /api/auth for authentication.",
+  );
+});
 app.use("/api/tasks", tasksRoute);
 app.use("/api/auth", authRoute);
 
