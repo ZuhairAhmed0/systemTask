@@ -29,7 +29,6 @@ const Header = ({ username, onLogout }) => {
           className="flex items-center hover:text-rose-200 transition-colors duration-300"
         >
           <FaArrowRightFromBracket className="inline-block mr-2" />
-          Logout
         </button>
       </div>
     </div>
