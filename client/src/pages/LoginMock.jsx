@@ -46,7 +46,7 @@ const LoginMock = ({ checkAuth }) => {
     login();
   };
   return (
-    <div className="flex h-screen items-center justify-center text-mauve-300 bg-gray-900">
+    <div className="px-6 flex h-screen items-center justify-center text-mauve-300 bg-gray-900">
       <div>
         <h2 className="text-3xl font-bold mb-3 text-center">
           <FaRegCheckSquare className="inline-block text-4xl mr-2 text-green-500" />
