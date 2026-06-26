@@ -3,6 +3,7 @@ import cors from "cors";
 import cookieParser from "cookie-parser";
 import tasksRoute from "./routes/tasksRoute.js";
 import authRoute from "./routes/authRoute.js";
+import swaggerRoute from "./routes/swaggerRoute.js";
 import logger from "./middleware/logger.js";
 import notFound from "./middleware/notFound.js";
 import errorHandler from "./middleware/errorHandller.js";
@@ -34,6 +35,9 @@ app.get("/", (req, res) => {
 });
 app.use("/api/tasks", tasksRoute);
 app.use("/api/auth", authRoute);
+
+// Swagger UI route (serves /api-docs)
+app.use("/", swaggerRoute);
 
 // Error handling middleware
 app.use(notFound);
