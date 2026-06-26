@@ -26,18 +26,19 @@ app.use(cookieParser());
 // Middleware
 app.use(logger);
 
-// Use routes
+// Mount Swagger UI at root BEFORE the welcome route so GET "/" serves the docs
+app.use("/", swaggerRoute);
 
-app.get("/", (req, res) => {
+// Use routes
+app.use("/api/tasks", tasksRoute);
+app.use("/api/auth", authRoute);
+
+// Optional welcome route (moved after Swagger; won't be hit for "/")
+app.get("/welcome", (req, res) => {
   res.send(
     "Welcome to the Task Management API. Please use /api/tasks for task operations and /api/auth for authentication.",
   );
 });
-app.use("/api/tasks", tasksRoute);
-app.use("/api/auth", authRoute);
-
-// Swagger UI route (serves /api-docs)
-app.use("/", swaggerRoute);
 
 // Error handling middleware
 app.use(notFound);
