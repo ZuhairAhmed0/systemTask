@@ -11,7 +11,7 @@ const __dirname = path.dirname(__filename);
 const swaggerPath = path.join(__dirname, "../docs/openapi.yaml");
 const swaggerDocument = YAML.load(swaggerPath);
 
-router.use("/api-docs", swaggerUi.serve);
-router.get("/api-docs", swaggerUi.setup(swaggerDocument));
+router.use("/", swaggerUi.serve);
+router.get("/", swaggerUi.setup(swaggerDocument));
 
 export default router;
